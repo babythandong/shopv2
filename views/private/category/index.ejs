@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../../head %>
+</head>
+
+<body>
+    <div id="wrapper">
+        <% include ../sidebar %>
+            <div id="page-wrapper" class="gray-bg">
+                <% include ../navbar %>
+
+                    <div class="row wrapper border-bottom white-bg page-heading">
+                        <div class="col-sm-4">
+                            <h2>List category</h2>
+                        </div>
+                        <div class="row"></div>
+                        <div class="col-lg-12">
+                            <div class="wrapper wrapper-content animated fadeInUp">
+                                <div class="ibox">
+                                    <div class="ibox-title">
+                                        <h5>All category assigned to this account</h5>
+                                        <div class="ibox-tools"><a href="/categories/add" class="btn btn-primary btn-xs">Create new category</a> </div>
+                                    </div>
+                                    <div class="ibox-content">
+                                        <div class="project-list">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <% 
+                                                        if(categories){ 
+                                                            categories.forEach(function(item){
+                                                    %>
+                                                    <tr>
+                                                         
+                                                        <td class="project-status"><span class="label label-primary">Active</span></td>
+                                                        <td class="project-title"><a href="project_detail.html"><%= item.name %></a> <br> <small>Created <%= moment(item.create).format('DD-MMM-YYYY') %></small></td>
+                                                        <td class="project-completion"><small><%- item.description %></small> </td>
+                                                        <td class="project-people"><small> <i>Có <%= item.count %> bài viết</i></small></td>
+                                                        <td class="project-actions"><a href="/categories/view/<%= item.id %>" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View
+                              </a><a href="/categories/edit/<%= item.id %>" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit</a><a href="/categories/del/<%= item.id %>" class="btn btn-white btn-sm"><i class="fa fa-times"></i> Del</a>
+                                                        </td>
+                                                    </tr>
+
+                                                    <% }); %>
+                                                    <%- paginate(categories) %>
+                                                    <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer">
+                        <div class="pull-right">10GB of <strong>250GB</strong> Free.</div>
+                        <div><strong>Copyright</strong> Example Company &copy; 2014-2015</div>
+                    </div>
+            </div>
+            <!-- Noi dung right-sidebar-->
+    </div>
+    <% include ../footer %>
+</body>
+
+</html>

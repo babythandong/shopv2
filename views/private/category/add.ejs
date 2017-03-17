@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../../head %>
+        <script src="/ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <% include ../sidebar %>
+            <div id="page-wrapper" class="gray-bg">
+                <% include ../navbar %>
+                    <div class="wrapper wrapper-content animated fadeInRight">
+                        <div class="row">
+                            <form action="" method="post">
+                                <div class="form-group">
+                                    <input type="text" name="name" placeholder="Name" required="" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <select name="parent" id="" class="form-control">
+                                        <option value="0">Danh mục cha</option>
+                                        <% if(categories){ 
+                                            categories.forEach(function(category){
+                                        %>
+                                        <option value="<%= category.name %>"><%= category.name %></option>
+                                        <% }); %>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
+                                    <script>
+                                        CKEDITOR.replace('description');
+                                    </script>
+                                </div>
+                                <input type="submit" class="btn btn-success" value="Add Category">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="pull-right">10GB of <strong>250GB</strong> Free.</div>
+                        <div><strong>Copyright</strong> Example Company &copy; 2014-2015</div>
+                    </div>
+            </div>
+            <!-- Noi dung right-sidebar-->
+    </div>
+    <% include ../footer %>
+</body>
+
+</html>

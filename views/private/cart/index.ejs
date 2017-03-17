@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../../head %>
+</head>
+
+<body>
+    <div id="wrapper">
+        <% include ../sidebar %>
+        <div id="page-wrapper" class="gray-bg">
+           <% include ../navbar %>
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                <% if(carts){ %>
+                /* Muốn hiển thị giỏ hàng đối với object của object sử dụng vòng lặp for
+                 với ví dụ như dưới, còn với trường hợp object of array thì sử dụng forEach */
+                <% for(var cart in carts){ %>
+                <p>Name: <%= carts[cart].name %></p>
+                <p>Số lượng <%= carts[cart].qty %></p>
+                <p>Tổng tiền: <%= carts[cart].total %></p>
+                <% } %>
+                <hr>
+                Tổng tiền phải trả: <%= total %>
+                <% } else { %>
+                <p>Giỏ hàng trống</p>
+                <% } %>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="pull-right">10GB of <strong>250GB</strong> Free.</div>
+                <div><strong>Copyright</strong> Example Company &copy; 2014-2015</div>
+            </div>
+        </div>
+        <!-- Noi dung right-sidebar-->
+    </div>
+   <% include ../footer %>
+</body>
+
+</html>

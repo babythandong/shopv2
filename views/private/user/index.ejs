@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../../head %>
+</head>
+
+<body>
+    <div id="wrapper">
+        <% include ../sidebar %>
+        <div id="page-wrapper" class="gray-bg">
+           <% include ../navbar %>
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+
+                    <% 
+                        if(users){ 
+                            users.forEach(function(user){
+                    %>
+                    <div class="col-lg-4"><span style="float:right;color:#000;padding-right:7px;padding-top:5px"><a href="/users/del/<%=user.id %>"> <i class="fa fa-times"></i></a></span><span style="float:right;color:#000;padding-right:3px;padding-top:5px"><a href="/users/edit/<%=user.id %>"> <i class="fa fa-wrench"></i></a></span>
+                        <div class="contact-box">
+                            <a href="profile.html"></a>
+                            <div class="col-sm-4">
+                                <div class="text-center"></div>
+                                <div class="m-t-xs font-bold">CEO</div>
+                            </div>
+                            <div class="col-sm-8">
+                                <h3></h3><strong><%= user.name %></strong>
+                                <p></p><i class="fa fa-envelope-o"></i> <%= user.email %><br>
+                                <i class="fa fa-user"></i> Create at: <%= moment(user.createAt).format('Do MMMM, YYYY'); %>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <% }); %>
+                    <% } %>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="pull-right">10GB of <strong>250GB</strong> Free.</div>
+                <div><strong>Copyright</strong> Example Company &copy; 2014-2015</div>
+            </div>
+        </div>
+        <!-- Noi dung right-sidebar-->
+    </div>
+   <% include ../footer %>
+</body>
+
+</html>

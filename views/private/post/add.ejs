@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../../head %>
+</head>
+
+<body>
+    <div id="wrapper">
+        <% include ../sidebar %>
+        <div id="page-wrapper" class="gray-bg">
+           <% include ../navbar %>
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="container">
+                    <div class="row">
+                        <form action="" method="post" enctype='multipart/form-data'>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="title" placeholder="Title">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="intro" placeholder="Intro">
+                            </div>
+                            <div class="form-group">
+                                <select name="parent" class="form-control">
+                                    <% 
+                                        if(categories){
+                                        categories.forEach(function(item){
+                                    %>
+                                    <option value="<%=item.name %>"><%=item.name %></option>
+                                    <% }); %>
+                                    <% } %>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" class="form-control" name="price" placeholder="Price">
+                            </div>
+                            <div class="form-group">
+                                <input type="file" name="image" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="content" id="content"></textarea>
+                                <script src="/ckeditor/ckeditor.js"></script>
+                                <script>
+                                    CKEDITOR.replace('content');
+                                </script>
+                            </div>
+                            <input type="submit" class="btn btn-success" value="Add Product">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="pull-right">10GB of <strong>250GB</strong> Free.</div>
+                <div><strong>Copyright</strong> Example Company &copy; 2014-2015</div>
+            </div>
+        </div>
+        <!-- Noi dung right-sidebar-->
+    </div>
+   <% include ../footer %>
+</body>
+
+</html>

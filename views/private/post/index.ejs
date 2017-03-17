@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../../head %>
+</head>
+
+<body>
+    <div id="wrapper">
+        <% include ../sidebar %>
+        <div id="page-wrapper" class="gray-bg">
+           <% include ../navbar %>
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <% if(posts){ %>
+                    <% posts.forEach(function(item){ %>
+                    <div class="col-md-4">
+                        <form action="/cart/<%=item.id %>" method="post">
+                            <input type="text" class="form-control" value="<%= item.title %>" disabled> 
+                            <input type="number" class="form-control" value="<%= item.price %>" disabled>
+                            <img src="/images/uploads/<%=item.thumbnail %>" class="img-responsive" alt="">
+                            <input type="number" class="form-control" name="qty" value="1">
+                            Mô tả: <%- item.intro %>    
+                            <input type="submit" class="btn btn-success" value="Add Cart">
+                        </form>
+                    </div>
+                    <% }); %>
+                    <% } else { %>
+                    <p>Không có bài viết nào</p>
+                    <% } %>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="pull-right">10GB of <strong>250GB</strong> Free.</div>
+                <div><strong>Copyright</strong> Example Company &copy; 2014-2015</div>
+            </div>
+        </div>
+        <!-- Noi dung right-sidebar-->
+    </div>
+   <% include ../footer %>
+</body>
+
+</html>
